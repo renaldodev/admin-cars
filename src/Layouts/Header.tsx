@@ -147,46 +147,18 @@ const Header: React.FC<HeaderProps> = (props) => {
           actions={[
             {
               content: (
-                <a
-                  className="left"
-                  href={`https://github.com/paljs/nextjs-admin-template`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="github">Support us in GitHub</span>
-                  <img src={`https://badgen.net/github/stars/paljs/nextjs-admin-template`} />
-                </a>
-              ),
-            },
-            {
-              content: (
-                <a
-                  href="https://join.slack.com/t/paljs/shared_invite/zt-ju5j9bb9-onkc9ZksqPZq~yIYJ3BfKw"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <img height="20" src="/slack.svg" alt="slack" />
-                </a>
-              ),
-            },
-            {
-              icon: 'twitter',
-              url: { href: 'https://twitter.com/AhmedElywh', target: '_blank' },
-            },
-            {
-              content: (
                 <ContextMenu
                   nextJs
                   style={{ cursor: 'pointer' }}
                   placement="bottom"
                   currentPath={router.pathname}
                   items={[
-                    { title: 'Profile', link: { href: '/modal-overlays/tooltip' } },
+                    { title: 'Meu perfil', link: { href: '/modal-overlays/tooltip' } },
                     { title: 'Log out', link: { href: '/logout' } },
                   ]}
                   Link={Link}
                 >
-                  <User image="url('/icons/icon-72x72.png')" name="Ahmed Elywa" title="Manger" size="Medium" />
+                  <User image="url('/icons/icon-72x72.png')" name="Renaldo Mateus" title="Admin" size="Medium" />
                 </ContextMenu>
               ),
             },

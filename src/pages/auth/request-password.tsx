@@ -11,7 +11,7 @@ export default function RequestPassword() {
     <Layout title="Esqueci a Password">
       <Auth
         title="Esqueci a Password"
-        subTitle="Insira o teu Email e recebererá um link de recopração de senha no teu email"
+        subTitle="Insira o teu Email e receberá um link de recoperação de senha no teu email"
       >
         <form>
           <InputGroup fullWidth>

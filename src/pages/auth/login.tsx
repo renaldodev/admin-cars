@@ -12,9 +12,9 @@ export default function Login() {
     // v will be true or false
   };
   return (
-    <Layout title="Login">
+    <Layout title="Login Admin Panel">
       <Auth title="Login" subTitle="Ola! Faça o Login com seu email">
-        <form>
+        <form action="/dashboard">
           <InputGroup fullWidth>
             <input type="email" placeholder="Endereço de Email" />
           </InputGroup>
@@ -29,7 +29,7 @@ export default function Login() {
               <a>Esqueci a password?</a>
             </Link>
           </Group>
-          <Button status="Success" type="button" shape="SemiRound" fullWidth>
+          <Button status="Success" type="submit" shape="SemiRound" fullWidth>
             Login
           </Button>
         </form>
