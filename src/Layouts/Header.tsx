@@ -11,10 +11,21 @@ import ContextMenu from '@paljs/ui/ContextMenu';
 import User from '@paljs/ui/User';
 import { breakpointDown } from '@paljs/ui/breakpoints';
 
+const Sticky = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+`;
 const HeaderStyle = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 6;
   ${breakpointDown('sm')`
     .right{
       display: none;
@@ -101,71 +112,73 @@ const Header: React.FC<HeaderProps> = (props) => {
     },
   ];
   return (
-    <LayoutHeader>
-      <HeaderStyle>
-        <Actions
-          size="Medium"
-          actions={[
-            {
-              icon: { name: 'menu-2-outline' },
-              url: {
-                onClick: props.toggleSidebar,
+    <Sticky>
+      <LayoutHeader className="sticky">
+        <HeaderStyle>
+          <Actions
+            size="Medium"
+            actions={[
+              {
+                icon: { name: 'menu-2-outline' },
+                url: {
+                  onClick: props.toggleSidebar,
+                },
               },
-            },
-            {
-              content: (
-                <Link href="/">
-                  <a className="logo">Admin Carros</a>
-                </Link>
-              ),
-            },
-            {
-              content: (
-                <SelectStyled
-                  instanceId="react-select-input"
-                  isSearchable={false}
-                  shape="SemiRound"
-                  placeholder="Themes"
-                  value={themeOptions().find((item) => item.value === props.theme.value)}
-                  options={themeOptions()}
-                  onChange={({ value }: { value: DefaultTheme['name'] }) => props.theme.set(value)}
-                />
-              ),
-            },
-            {
-              content: (
-                <Button size="Small" onClick={() => props.changeDir()}>
-                  {props.dir}
-                </Button>
-              ),
-            },
-          ]}
-        />
-        <Actions
-          size="Small"
-          className="right"
-          actions={[
-            {
-              content: (
-                <ContextMenu
-                  nextJs
-                  style={{ cursor: 'pointer' }}
-                  placement="bottom"
-                  currentPath={router.pathname}
-                  items={[
-                    { title: 'Meu perfil', link: { href: '/modal-overlays/tooltip' } },
-                    { title: 'Log out', link: { href: '/logout' } },
-                  ]}
-                  Link={Link}
-                >
-                  <User image="url('/icons/icon-72x72.png')" name="Renaldo Mateus" title="Admin" size="Medium" />
-                </ContextMenu>
-              ),
-            },
-          ]}
-        />
-      </HeaderStyle>
-    </LayoutHeader>
+              {
+                content: (
+                  <Link href="/">
+                    <a className="logo">Admin Carros</a>
+                  </Link>
+                ),
+              },
+              {
+                content: (
+                  <SelectStyled
+                    instanceId="react-select-input"
+                    isSearchable={false}
+                    shape="SemiRound"
+                    placeholder="Themes"
+                    value={themeOptions().find((item) => item.value === props.theme.value)}
+                    options={themeOptions()}
+                    onChange={({ value }: { value: DefaultTheme['name'] }) => props.theme.set(value)}
+                  />
+                ),
+              },
+              {
+                content: (
+                  <Button size="Small" onClick={() => props.changeDir()}>
+                    {props.dir}
+                  </Button>
+                ),
+              },
+            ]}
+          />
+          <Actions
+            size="Small"
+            className="right"
+            actions={[
+              {
+                content: (
+                  <ContextMenu
+                    nextJs
+                    style={{ cursor: 'pointer' }}
+                    placement="bottom"
+                    currentPath={router.pathname}
+                    items={[
+                      { title: 'Meu perfil', link: { href: '/modal-overlays/tooltip' } },
+                      { title: 'Log out', link: { href: '/logout' } },
+                    ]}
+                    Link={Link}
+                  >
+                    <User image="url('/icons/icon-72x72.png')" name="Renaldo Mateus" title="Admin" size="Medium" />
+                  </ContextMenu>
+                ),
+              },
+            ]}
+          />
+        </HeaderStyle>
+      </LayoutHeader>
+    </Sticky>
   );
 };
 export default Header;
